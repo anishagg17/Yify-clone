@@ -15,6 +15,7 @@ export default () => {
   const [loading, setLoading] = useState(true)
   const [page, setPage] = useState(1)
   const [totalPages, setTotalPages] = useState(0)
+  const pageSize = 8
 
   useEffect(() => {
     try {
@@ -22,7 +23,7 @@ export default () => {
         const res = await Axios.get("https://yts.mx/api/v2/list_movies.json")
         //   console.log("res", res.data.data)
         setMovies(res.data.data.movies)
-        setTotalPages((res.data.data.movies.length + 8) / 9)
+        setTotalPages((res.data.data.movies.length + pageSize - 1) / pageSize)
         setLoading(false)
       }
       fetchData()
@@ -38,6 +39,8 @@ export default () => {
       </Body>
     )
 
+  const moviesToDisplay = movies.slice((page - 1) * pageSize, page * pageSize)
+
   return (
     <Body>
       <Paginatior
@@ -45,7 +48,7 @@ export default () => {
         page={page}
         setPage={i => setPage(i)}
       />
-      <MovieList movies={movies} />
+      <MovieList movies={moviesToDisplay} />
     </Body>
   )
 }
