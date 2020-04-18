@@ -132,7 +132,7 @@ const Available = styled.em`
   margin-inline-end: 0px;
 `
 
-const Download = styled.button`
+export const Download = styled.button`
   background: #6ac045;
   margin: 0px 0;
   width: 89%;
