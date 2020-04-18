@@ -18,27 +18,31 @@ export const removeFromCart = item => ({
 })
 
 export default (state = initialState, { item, type }) => {
+  const curState = { ...state }
   switch (type) {
     case ADD_TO_CART:
-      if (state.cart.includes(item)) return state
+      if (curState.cart.includes(item)) return curState
 
       console.log("item to add ", item)
-      const newCart = `${state.cart}/${item}`
+
+      const newCart = `${localStorage.getItem("cart")}/${item}`
       localStorage.setItem("cart", newCart)
       console.log("newCart", newCart)
-      return { ...state, cart: newCart }
+      return { ...curState, cart: newCart }
 
     case REMOVE_FROM_CART:
       console.log("item to remove ", item)
-      const remCart = state.cart
+      const remCart = localStorage
+        .getItem("cart")
         .split("/")
         .filter(it => it !== item)
         .join("/")
       localStorage.setItem("cart", remCart)
+      console.log("remCart", remCart)
 
-      return { ...state, cart: remCart }
+      return { ...curState, cart: remCart }
 
     default:
-      return state
+      return curState
   }
 }

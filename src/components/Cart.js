@@ -43,8 +43,6 @@ const Cart = ({ cart, dispatch }) => {
 
       <div>
         {cart.split("/").map(it => {
-          console.log("cart", cart)
-          console.log("it", it)
           if (it.lenght === 0 || it === "") return null
           return (
             <ListItem button>
