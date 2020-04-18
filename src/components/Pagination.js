@@ -12,13 +12,15 @@ const Flex = styled.div`
   :focus {
     border: none;
   }
+  .active {
+    border: 1px solid #6ac045 !important;
+  }
 `
 const Option = styled.button`
   background-color: rgba(0, 0, 0, 0.08);
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   box-sizing: border-box;
-  border: 1px solid #333;
   border-radius: 3px;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -29,12 +31,12 @@ const Option = styled.button`
   display: block;
   margin-right: 0.4rem;
   :focus {
-    border: none;
     outline: none;
   }
   :hover {
     cursor: pointer;
   }
+  border: 1px solid #333;
 `
 
 export default ({ totalPages, page, setPage }) => {
@@ -45,7 +47,12 @@ export default ({ totalPages, page, setPage }) => {
       {arr.map(i => {
         const color = page === i ? "#6AC045" : "#fff"
         return (
-          <Option key={i} color={color} onClick={e => setPage(i)}>
+          <Option
+            className={page === i && "active"}
+            key={i}
+            color={color}
+            onClick={e => setPage(i)}
+          >
             {i}
           </Option>
         )
