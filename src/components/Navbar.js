@@ -28,11 +28,13 @@ const Link = styled(_Link)`
 export default function Navbar() {
   return (
     <Flex justify="space-between">
-      <img
-        src="https://yts.mx/assets/images/website/logo-YTS.svg"
-        alt="YIFY"
-        style={{ width: "10rem" }}
-      />
+      <Link to="/">
+        <img
+          src="https://yts.mx/assets/images/website/logo-YTS.svg"
+          alt="YIFY"
+          style={{ width: "10rem" }}
+        />
+      </Link>
       <Flex>
         <SearchBar placeholder="Quick Search" />
         <Link to="/">Home</Link>
