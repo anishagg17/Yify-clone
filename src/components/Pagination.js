@@ -38,13 +38,7 @@ const Option = styled.button`
 `
 
 export default ({ totalPages, page, setPage }) => {
-  const onShowSizeChange = (current, pageSize) => {
-    console.log(current, pageSize)
-  }
-
   const arr = Array.from({ length: totalPages }, (x, i) => i + 1)
-  console.log("arr", arr)
-  console.log("page", page)
 
   return (
     <Flex>

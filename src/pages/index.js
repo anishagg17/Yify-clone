@@ -4,7 +4,7 @@ import Footer from "../components/Footer"
 import Main from "../components/Main"
 
 export default () => (
-  <div>
+  <div style={{ height: "100%", background: "#1d1d1d" }}>
     <Navbar />
     <Main />
     <Footer />

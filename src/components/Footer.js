@@ -1,6 +1,13 @@
 import styled from "styled-components"
 import React from "react"
 
+const Foot = styled.div`
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+`
+
 const Flex = styled.div`
   display: flex;
   box-siezing: border-box;
@@ -10,7 +17,6 @@ const Flex = styled.div`
   color: ${props => (props.color ? props.color : "#919191")};
   font-size: 0.85em;
   font-weight: 700;
-
   z-index: 8;
   background: #1d1d1d;
   :focus {
@@ -18,9 +24,9 @@ const Flex = styled.div`
   }
 `
 
-export default function Footer() {
+export default () => {
   return (
-    <div>
+    <Foot>
       <Flex>
         YTS © 2011 - 2020 - Blog - DMCA - API - RSS - Contact - Browse Movies -
         Requests - Login
@@ -30,6 +36,6 @@ export default function Footer() {
         By using this site you agree to and accept our User Agreement, which can
         be read here.
       </Flex>
-    </div>
+    </Foot>
   )
 }
