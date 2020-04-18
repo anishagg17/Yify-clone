@@ -12,7 +12,7 @@ const SomeSubPage = ({ id }) => {
   useEffect(() => {
     const fetchData = async () => {
       const res = await Axios.get(
-        `https://yts.mx/api/v2/movie_details.json?movie_id=${id}`
+        `https://yts.mx/api/v2/movie_details.json?movie_id=${id}&with_images=true&with_cast=true`
       )
       console.log("res", res.data)
       setMovie(res.data.data.movie)

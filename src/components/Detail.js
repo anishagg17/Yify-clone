@@ -34,6 +34,8 @@ const Title = styled.h1`
 const Flex = styled.div`
   display: flex;
   box-siezing: border-box;
+  justify-content: ${props => props.justify && props.justify};
+
   * {
     margin-bottom: 0.8rem;
   }
@@ -61,6 +63,8 @@ const Quality = styled.span`
   box-sizing: border-box;
 `
 const Syn = styled.div`
+  width: 60%;
+
   h3 {
     // width: 100%;
     margin-top: 20px;
@@ -75,7 +79,8 @@ const Syn = styled.div`
     font-size: 1.25em;
     font-weight: 700;
   }
-  p {
+  p,
+  i {
     color: #919191;
     line-height: 24px;
     margin: 5px 0;
@@ -157,6 +162,51 @@ const Year = styled.h2`
   margin-inline-end: 0px;
 `
 
+const Cast = styled.div`
+  width: 30%;
+  margin-left: 10px;
+  > * {
+    border-bottom: 1px solid #2f2f2f;
+  }
+  h3 {
+    font-size: 1.25em;
+    font-weight: 700;
+    display: block;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    color: #fff;
+    padding-bottom: 10px;
+  }
+
+  div {
+    img {
+      height: 40px;
+      width: 40px;
+      border-radius: 150px;
+      -webkit-border-radius: 150px;
+      -moz-border-radius: 150px;
+      margin-right: 10px;
+    }
+    .actor {
+      box-sizing: border-box;
+      color: rgb(145, 145, 145);
+      cursor: pointer;
+      display: inline;
+      font-family: Arimo, Arial, Helvetica, "lucida grande", sans-serif;
+      font-size: 13.68px;
+      font-weight: 700;
+    }
+    .role {
+      box-sizing: border-box;
+      color: rgb(255, 255, 255);
+      display: table-cell;
+      font-family: Arimo, Arial, Helvetica, "lucida grande", sans-serif;
+      font-size: 14.4px;
+      letter-spacing: -0.48px;
+    }
+  }
+`
+
 export default ({
   movie: {
     title,
@@ -165,11 +215,14 @@ export default ({
     id,
     rating,
     year,
+    cast,
     runtime,
     genres,
     medium_cover_image,
+    date_uploaded,
   },
 }) => {
+  //   const date = new Date(date_uploaded)
   return (
     <Body key={id}>
       <Flex>
@@ -186,15 +239,43 @@ export default ({
             <Quality>720p</Quality>
           </Available>
           <Rating>
-            <img src="https://yts.mx/assets/images/website/logo-imdb.svg" />
+            <img
+              src="https://yts.mx/assets/images/website/logo-imdb.svg"
+              alt="IMDb"
+            />
             <span>{rating}</span>
             <span className="hidden-xs icon-star" />
           </Rating>
-          <Syn>
-            <h3>Synopsis</h3>
-            <p>{description_full}</p>
-          </Syn>
         </div>
+      </Flex>
+      <Flex justify="space-between">
+        <Syn>
+          <h3>Synopsis</h3>
+          <p>{description_full}</p>
+          <i>Uploaded at : {date_uploaded}</i>
+        </Syn>
+
+        {cast && (
+          <Cast>
+            <h3>Cast</h3>
+            {cast.map(({ name, character_name, url_small_image }) => (
+              <div
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  // justifyContent: "space-between",
+                }}
+              >
+                <img src={url_small_image} alt={name} />
+                <div className="actor">{`${name} `}</div>
+                <span style={{ marginLeft: "5px" }} className="role">
+                  {"  as"} {character_name}
+                </span>
+              </div>
+            ))}
+          </Cast>
+        )}
       </Flex>
     </Body>
   )
