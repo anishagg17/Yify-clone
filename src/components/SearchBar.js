@@ -9,6 +9,9 @@ const Bar = styled.input`
   padding: 4px 30px;
   font-size: 0.85em;
   color: #919191;
+  :focus {
+    outline: none;
+  }
 `
 
 export default function SearchBar() {
