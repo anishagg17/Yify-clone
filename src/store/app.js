@@ -23,15 +23,18 @@ export default (state = initialState, { item, type }) => {
       if (state.cart.includes(item)) return state
 
       console.log("item to add ", item)
-      const newCart = `${state.cart} ${item}`
+      const newCart = `${state.cart}/${item}`
+      localStorage.setItem("cart", newCart)
+      console.log("newCart", newCart)
       return { ...state, cart: newCart }
 
     case REMOVE_FROM_CART:
       console.log("item to remove ", item)
       const remCart = state.cart
-        .split(" ")
+        .split("/")
         .filter(it => it !== item)
-        .join(" ")
+        .join("/")
+      localStorage.setItem("cart", remCart)
 
       return { ...state, cart: remCart }
 

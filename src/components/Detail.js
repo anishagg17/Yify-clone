@@ -146,6 +146,10 @@ export const Download = styled.button`
   display: block;
   font-weight: 700;
   font-size: 1.1em;
+  cursor: pointer;
+  :focus {
+    outline: none;
+  }
   padding: 7px 0;
 `
 const Year = styled.h2`
@@ -226,7 +230,6 @@ const Detail = ({
   cart,
   dispatch,
 }) => {
-  console.log("cart", cart)
   return (
     <Body key={id}>
       <Flex>
