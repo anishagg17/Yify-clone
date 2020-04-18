@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Router } from "@reach/router"
 import Axios from "axios"
+import ReduxWrapper from "../store/ReduxWrapper"
 
 import Navbar from "../components/Navbar"
 import Loader from "../components/Loader"
@@ -40,8 +41,10 @@ const SomeSubPage = ({ id }) => {
 
 export default () => {
   return (
-    <Router>
-      <SomeSubPage path="/movie/:id" />
-    </Router>
+    <ReduxWrapper>
+      <Router>
+        <SomeSubPage path="/movie/:id" />
+      </Router>
+    </ReduxWrapper>
   )
 }

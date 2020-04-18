@@ -1,5 +1,7 @@
 import React from "react"
 import styled from "styled-components"
+import { connect } from "react-redux"
+import { addToCart } from "../store/app"
 
 const Image = styled.img`
   height: 100%;
@@ -207,7 +209,7 @@ const Cast = styled.div`
   }
 `
 
-export default ({
+const Detail = ({
   movie: {
     title,
     description_full,
@@ -221,16 +223,19 @@ export default ({
     medium_cover_image,
     date_uploaded,
   },
+  cart,
+  dispatch,
 }) => {
-  //   const date = new Date(date_uploaded)
-
+  console.log("cart", cart)
   return (
     <Body key={id}>
       <Flex>
         <div style={{ height: "100%" }}>
           <Image src={medium_cover_image} alt={title} />
 
-          <Download>Download</Download>
+          <Download onClick={() => dispatch(addToCart(title))}>
+            Download
+          </Download>
         </div>
         <div style={{ height: "100%" }}>
           <Title>{title}</Title> <Year>{year}</Year>
@@ -281,3 +286,9 @@ export default ({
     </Body>
   )
 }
+
+const mapStateToProps = state => {
+  return { cart: state.app.cart }
+}
+
+export default connect(mapStateToProps, null)(Detail)
