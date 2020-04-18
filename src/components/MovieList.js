@@ -4,6 +4,7 @@ import styled from "styled-components"
 
 const Flex = styled.div`
   margin-top: 2rem;
+  margin-bottom: 2rem;
   display: flex;
   box-siezing: border-box;
   padding: 0.42rem 3rem;
