@@ -40,14 +40,14 @@ const Title = styled(Link)`
 `
 
 export default ({
-  movie: { title, slug, rating, year, runtime, genres, medium_cover_image },
+  movie: { title, slug, id, rating, year, runtime, genres, medium_cover_image },
 }) => {
   //   const = movie
   //   console.log("title", props)
   return (
     <Card>
       <Image src={medium_cover_image} alt={title} />
-      <Title to={`movie/${slug}`}>{title}</Title>
+      <Title to={`movie/${id}`}>{title}</Title>
       <Year>{year}</Year>
     </Card>
   )
