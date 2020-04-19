@@ -5,4 +5,4 @@ import rootReducer from "."
 
 const Store = () => createStore(rootReducer)
 
-export default ({ children }) => <Provider store={Store()}>{children}</Provider>
+export default ({ element }) => <Provider store={Store()}>{element}</Provider>

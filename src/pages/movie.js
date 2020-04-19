@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react"
 import { Router } from "@reach/router"
 import Axios from "axios"
-import ReduxWrapper from "../store/ReduxWrapper"
 
 import Navbar from "../components/Navbar"
 import Loader from "../components/Loader"
 import Footer from "../components/Footer"
 import Detail from "../components/Detail"
 
-const SomeSubPage = ({ id }) => {
+const SubPage = ({ id }) => {
   const [movie, setMovie] = useState({})
   const [loading, setLoading] = useState(true)
 
@@ -41,10 +40,8 @@ const SomeSubPage = ({ id }) => {
 
 export default () => {
   return (
-    <ReduxWrapper>
-      <Router>
-        <SomeSubPage path="/movie/:id" />
-      </Router>
-    </ReduxWrapper>
+    <Router>
+      <SubPage path="/movie/:id" />
+    </Router>
   )
 }
