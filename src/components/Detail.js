@@ -267,8 +267,9 @@ const Detail = ({
         {cast && (
           <Cast>
             <h3>Cast</h3>
-            {cast.map(({ name, character_name, url_small_image }) => (
+            {cast.map(({ name, character_name, url_small_image }, idx) => (
               <div
+                key={idx}
                 style={{
                   width: "100%",
                   display: "flex",

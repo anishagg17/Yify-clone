@@ -2,7 +2,7 @@ import React from "react"
 import ClipLoader from "react-spinners/ClipLoader"
 import styled from "styled-components"
 
-const Center = styled.div`
+export const Center = styled.div`
   width: 100vw;
   height: 80vh;
   display: flex;
